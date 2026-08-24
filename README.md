@@ -15,7 +15,7 @@ Preparación técnica para postular a una pasantía de AI Engineer.
 ## Progreso
 
 - [x] Día 1 — Python
-- [ ] Día 2 — APIs y Backend
+- [x] Día 2 — APIs y Backend
 - [ ] Día 3 — Machine Learning
 - [ ] Día 4 — IA Generativa
 - [ ] Día 5 — Automatización

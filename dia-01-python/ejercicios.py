@@ -1,3 +1,18 @@
+# Día 1 — Python
+# Preparación AI Engineer 2026
+#
+# Temas:
+# - Tipos de datos
+# - Listas
+# - Diccionarios
+# - Condicionales
+# - Loops
+# - Funciones
+# - List comprehensions
+# - Manejo de excepciones
+# - Validación de datos
+
+
 # EJERCICIO 1
 
 transaccion = {

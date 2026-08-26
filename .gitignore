@@ -5,14 +5,21 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# Entornos
+# Entornos virtuales
 .venv/
 venv/
 env/
 
 # Variables de entorno
 .env
+.env.*
 
 # Modelos generados
 *.pkl
 *.joblib
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db

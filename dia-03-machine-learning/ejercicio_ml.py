@@ -1,9 +1,15 @@
 import pandas as pd
+import joblib
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import precision_score, recall_score, f1_score
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    precision_score,
+    recall_score,
+    f1_score
+)
 
 datos = {
     "monto": [
@@ -144,3 +150,8 @@ print(prediccion)
 
 print("Probabilidades:")
 print(probabilidad)
+
+print("\n=========================")
+
+joblib.dump(modelo, "modelo_fraude.joblib")
+print("Modelo guardado correctamente.")

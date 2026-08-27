@@ -11,6 +11,11 @@ from sklearn.metrics import (
     f1_score
 )
 
+
+# =========================
+# Dataset
+# =========================
+
 datos = {
     "monto": [
         500, 8000, 300, 12000,
@@ -34,20 +39,18 @@ df = pd.DataFrame(datos)
 print("Dataset:")
 print(df)
 
-print("\n=========================")
 
-# Separar features (X) y target (y)
+# =========================
+# Features y target
+# =========================
 
 X = df[["monto", "hora"]]
 y = df["fraude"]
 
-print("Features (X):")
-print(X)
 
-print("\nTarget (y):")
-print(y)
-
-print("\n=========================")
+# =========================
+# Train / Test
+# =========================
 
 X_train, X_test, y_train, y_test = train_test_split(
     X,
@@ -57,85 +60,68 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-print("\nX_train: ")
-print(X_train)
 
-print("\nX_test: ")
-print(X_test)
-
-print("\ny_train: ")
-print(y_train)
-
-print("\ny_test:")
-print(y_test)
-
-print("\n=========================")
+# =========================
+# Entrenamiento
+# =========================
 
 modelo = LogisticRegression()
+
 modelo.fit(X_train, y_train)
+
+
+# =========================
+# Predicciones
+# =========================
 
 predicciones = modelo.predict(X_test)
 
-print("Predicciones: ")
+print("Predicciones:")
 print(predicciones)
 
-print("Valores reales: ")
+print("Valores reales:")
 print(y_test.values)
 
-print("\n=========================")
+
+# =========================
+# Métricas
+# =========================
 
 accuracy = accuracy_score(y_test, predicciones)
-
-print(f"Accuracy: {accuracy}")
-
-print("\n=========================")
-
-matriz = confusion_matrix(y_test, predicciones)
-
-print("Matriz de confunsion: ")
-print(matriz)
-
-print("\n=========================")
-
 precision = precision_score(y_test, predicciones)
-recall = recall_score = recall_score(y_test, predicciones)
+recall = recall_score(y_test, predicciones)
 f1 = f1_score(y_test, predicciones)
 
+print("\nMétricas:")
+print(f"Accuracy: {accuracy}")
 print(f"Precision: {precision}")
 print(f"Recall: {recall}")
 print(f"F1: {f1}")
 
-print("\n=========================")
 
-print(modelo.coef_)
-print(modelo.intercept_)
+# =========================
+# Matriz de confusión
+# =========================
 
-print("\n=========================")
+matriz = confusion_matrix(y_test, predicciones)
+
+print("\nMatriz de confusión:")
+print(matriz)
+
+
+# =========================
+# Probabilidades
+# =========================
 
 probabilidades = modelo.predict_proba(X_test)
+
+print("\nProbabilidades:")
 print(probabilidades)
 
-print("\n=========================")
 
-probabilidades = modelo.predict_proba(X_test)
-
-print("Probabilidades:")
-print(probabilidades)
-
-print("\n=========================")
-
-nueva_transaccion = [[7000, 4]]
-
-prediccion = modelo.predict(nueva_transaccion)
-probabilidad = modelo.predict_proba(nueva_transaccion)
-
-print("Predicción:")
-print(prediccion)
-
-print("Probabilidades:")
-print(probabilidad)
-
-print("\n=========================")
+# =========================
+# Nueva transacción
+# =========================
 
 nueva_transaccion = pd.DataFrame({
     "monto": [7000],
@@ -145,13 +131,20 @@ nueva_transaccion = pd.DataFrame({
 prediccion = modelo.predict(nueva_transaccion)
 probabilidad = modelo.predict_proba(nueva_transaccion)
 
+print("\nNueva transacción:")
+print(nueva_transaccion)
+
 print("Predicción:")
 print(prediccion)
 
 print("Probabilidades:")
 print(probabilidad)
 
-print("\n=========================")
+
+# =========================
+# Guardar modelo
+# =========================
 
 joblib.dump(modelo, "modelo_fraude.joblib")
-print("Modelo guardado correctamente.")
+
+print("\nModelo guardado correctamente.")

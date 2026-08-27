@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+
 app = FastAPI()
 
 
@@ -8,7 +9,8 @@ class Transaccion(BaseModel):
     monto: float
     tipo: str
 
-def detectar_fraude(monto):
+
+def detectar_fraude(monto: float) -> bool:
     return monto >= 5000
 
 
@@ -16,14 +18,14 @@ def detectar_fraude(monto):
 def inicio():
     return {"mensaje": "Mi primera API de AI Engineer"}
 
+
 @app.post("/predecir")
 def predecir(transaccion: Transaccion):
-    return{
+    return {
         "monto": transaccion.monto,
         "tipo": transaccion.tipo,
-        "fraude": transaccion.monto >= 5000
+        "fraude": detectar_fraude(transaccion.monto)
     }
-
 
 
 # ¿Qué apareció en http://127.0.0.1:8000?

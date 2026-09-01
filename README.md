@@ -18,11 +18,14 @@ Preparación técnica para postular a una pasantía de AI Engineer.
 - [x] Día 2 — APIs y Backend
 - [x] Día 3 — Machine Learning
 - [x] Día 4 — IA Generativa
-- [ ] Día 5 — Automatización
+- [x] Día 5 — Automatización
 
 ## Tecnologías
 
 - Python
+- Pandas
+- scikit-learn
+- Joblib
 - Requests
 - FastAPI
 - Pydantic
@@ -35,6 +38,25 @@ Preparación técnica para postular a una pasantía de AI Engineer.
 Durante la preparación se desarrollarán pequeños ejercicios y proyectos prácticos relacionados con AI Engineering.
 
 Los ejercicios están organizados por días y buscan llevar los conceptos teóricos a implementaciones funcionales.
+
+---
+
+## Día 1 — Python
+
+Durante este día se trabajó con conceptos fundamentales de Python:
+
+- Variables y tipos de datos
+- Listas y diccionarios
+- Estructuras de control
+- `for` y `if`
+- Comprensiones de listas
+- Manejo de excepciones con `try/except`
+- Procesamiento y filtrado de datos
+- Validación de información
+
+Como ejercicio práctico se trabajó con datos de transacciones financieras, realizando operaciones de filtrado, validación y limpieza de información.
+
+---
 
 ## Día 2 — APIs y Backend
 
@@ -51,65 +73,88 @@ Durante este día se trabajó con:
 
 Como ejercicio práctico se desarrolló una API sencilla de detección de fraude.
 
+La API recibe información de una transacción y devuelve una clasificación basada en reglas de negocio.
+
 ---
 
 ## Día 3 — Machine Learning
 
-Durante este día se trabajó con:
+Durante este día se trabajó con conceptos fundamentales de Machine Learning:
 
-- Separación de features (`X`) y target (`y`)
+- Preparación de datos
+- Features y target
 - División de datos en entrenamiento y prueba
-- `train_test_split`
-- División estratificada mediante `stratify`
-- Regresión logística con `LogisticRegression`
-- Entrenamiento de modelos mediante `.fit()`
-- Predicciones mediante `.predict()`
-- Probabilidades mediante `.predict_proba()`
-- Matriz de confusión
+- Entrenamiento de modelos
+- Regresión logística
+- Predicciones con `predict()`
+- Probabilidades con `predict_proba()`
 - Accuracy
 - Precision
 - Recall
 - F1 Score
-- Guardado de modelos con `joblib`
+- Matriz de confusión
+- Persistencia de modelos con Joblib
 
-Como ejercicio práctico se entrenó un modelo sencillo para detectar posibles transacciones fraudulentas utilizando el monto y la hora de la transacción.
+Como ejercicio práctico se desarrolló un modelo sencillo de detección de fraude utilizando:
 
-Posteriormente, el modelo fue integrado en una API con **FastAPI** para realizar predicciones mediante un endpoint `/predecir`.
+- `monto` como variable de entrada
+- `hora` como variable de entrada
+- `fraude` como variable objetivo
+
+El modelo fue posteriormente guardado utilizando Joblib para poder reutilizarlo desde otros programas.
 
 ---
 
 ## Día 4 — IA Generativa
 
-Durante este día se trabajó con conceptos fundamentales de IA Generativa y LLMs:
+Durante este día se trabajó con conceptos fundamentales de IA Generativa y Large Language Models (LLMs):
 
-- Qué es un LLM
-- Qué es un prompt
-- Entrada y salida de un modelo
-- Diferencias entre Machine Learning tradicional y LLMs
-- Construcción de prompts mediante f-strings
-- Peticiones HTTP mediante `requests`
-- Headers HTTP
-- Autenticación mediante API Keys
-- Variables de entorno con `.env`
-- Uso de `python-dotenv`
+- Conceptos básicos de LLMs
+- Prompts
+- Construcción dinámica de prompts con Python
+- Comunicación mediante HTTP
+- API Keys
+- Variables de entorno
+- Archivos `.env`
 - Procesamiento de respuestas JSON
-- `json.loads()`
-- `json.dumps()`
-- Manejo de errores con `try/except`
+- Manejo de errores con `JSONDecodeError`
 - Simulación de respuestas de un LLM
-- Procesamiento de múltiples transacciones
 
-También se construyó un flujo simulado:
+Como ejercicio práctico se desarrolló un flujo simulado para analizar transacciones financieras mediante un prompt.
+
+El flujo genera una instrucción para un modelo de lenguaje y procesa una respuesta estructurada en formato JSON.
+
+---
+
+## Día 5 — Automatización
+
+Durante este día se desarrolló un pipeline automatizado para procesar transacciones y detectar posibles fraudes.
+
+Se trabajó con:
+
+- Lectura de archivos CSV mediante Pandas
+- Limpieza de datos
+- Carga de un modelo previamente entrenado
+- Uso de `predict_proba()`
+- Clasificación mediante reglas de negocio
+- Uso de umbrales de probabilidad
+- Generación de estadísticas
+- Generación automática de reportes `.txt`
+- Organización del procesamiento mediante funciones de Python
+
+### Flujo del pipeline
 
 ```text
-Datos de la transacción
-        ↓
-Crear prompt
-        ↓
-LLM simulado
-        ↓
-Respuesta JSON
-        ↓
-json.loads()
-        ↓
-Resultado estructurado
+CSV
+ ↓
+Pandas
+ ↓
+Limpieza de datos
+ ↓
+Modelo de Machine Learning
+ ↓
+Probabilidad de fraude
+ ↓
+Reglas de clasificación
+ ↓
+Reporte automático

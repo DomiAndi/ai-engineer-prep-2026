@@ -1,0 +1,8 @@
+
+REPORTE DE TRANSACCIONES
+========================
+
+Total procesadas: 6
+Transacciones normales: 3
+Transacciones para revisar: 0
+Alertas de fraude: 3
